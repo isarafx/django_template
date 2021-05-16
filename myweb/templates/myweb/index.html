@@ -1,0 +1,152 @@
+{% extends 'myweb/base.html' %}
+
+{% block metadata %}
+<title>Home</title>
+{% endblock %}
+
+{% block content %}
+<main id="main">
+  <!-- ======= Services Section ======= -->
+  <section class="section-services section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Our Services</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-cart"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">Lifestyle</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
+                  convallis a pellentesque
+                  nec, egestas non nisi.
+                </p>
+              </div>
+              <div class="card-footer-c">
+                <a href="#" class="link-c link-icon">Read more
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-calendar4-week"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">Loans</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit
+                  aliquet elit, eget tincidunt
+                  nibh pulvinar a.
+                </p>
+              </div>
+              <div class="card-footer-c">
+                <a href="#" class="link-c link-icon">Read more
+                  <span class="bi bi-calendar4-week"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-card-checklist"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">Sell</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
+                  convallis a pellentesque
+                  nec, egestas non nisi.
+                </p>
+              </div>
+              <div class="card-footer-c">
+                <a href="#" class="link-c link-icon">Read more
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- End Services Section -->
+
+
+  <!-- ======= Latest News Section ======= -->
+  <section class="section-news section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Latest Blog</h2>
+              </div>
+              <div class="title-link">
+                <a href="{% url 'blog' %}">All News
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="news-carousel" class="swiper-container">
+          <div class="swiper-wrapper">
+
+            {% for blog_data in blog %}
+            <div class="carousel-item-c swiper-slide">
+              <div class="card-box-b card-shadow news-box">
+                <div class="img-box-b">
+                  <img src="{{ blog_data.cover_pic.url }}" alt="" class="img-b img-fluid">
+                </div>
+                <div class="card-overlay">
+                  <div class="card-header-b">
+                    <div class="card-title-b">
+                      <h2 class="title-2">
+                        <a href="/blog/{{ blog_data.slug }}">{{ blog_data.title }}</a>
+                      </h2>
+                    </div>
+                    <div class="card-date">
+                      <span class="date-b">{{ blog_data.date_updated}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End carousel item -->
+            {% endfor %}
+
+          </div>
+        </div>
+
+        <div class="news-carousel-pagination carousel-pagination"></div>
+      </div>
+    </section><!-- End Latest News Section -->
+</main><!-- End #main -->
+
+
+{% endblock %}
